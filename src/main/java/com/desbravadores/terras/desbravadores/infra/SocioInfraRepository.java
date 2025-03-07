@@ -3,8 +3,8 @@ package com.desbravadores.terras.desbravadores.infra;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
 
-import com.desbravadores.terras.desbravadores.application.repository.DesbravadorRepository;
-import com.desbravadores.terras.desbravadores.domain.Desbravadores;
+import com.desbravadores.terras.desbravadores.application.repository.SocioRepository;
+import com.desbravadores.terras.desbravadores.domain.SocioCT;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,14 +12,14 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 @Log4j2
 @EnableMongoRepositories
-public class DesbravadorInfraRepository implements DesbravadorRepository {
+public class SocioInfraRepository implements SocioRepository {
 
-	private final DesbravadorSpringDataJPARepository desbravadorSpringDataJPARepository;
+	private final SocioSpringDataJPARepository desbravadorSpringDataJPARepository;
 
 	@Override
-	public Desbravadores salva(Desbravadores desbravadores) {
+	public SocioCT salva(SocioCT desbravadores) {
 		log.info("[inicia] DesbravadorInfraRepository - salva");
-		Desbravadores novoDesbravador = desbravadorSpringDataJPARepository.save(desbravadores);
+		SocioCT novoDesbravador = desbravadorSpringDataJPARepository.save(desbravadores);
 		log.info("[finaliza] DesbravadorInfraRepository - salva");
 		return novoDesbravador;
 	}

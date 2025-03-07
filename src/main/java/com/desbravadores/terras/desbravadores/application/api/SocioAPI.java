@@ -11,8 +11,8 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "v1/dbv")
-public interface DesbravadoresAPI {
+public interface SocioAPI {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	DesbravadorResponse criaDesbravador(@RequestBody @Valid DesbravadorRequest novoDesbravador);
+	SocioResponse criaSocio(@RequestBody @Valid SocioRequest novoSocio);
 }

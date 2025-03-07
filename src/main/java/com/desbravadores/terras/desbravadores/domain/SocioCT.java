@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.desbravadores.terras.desbravadores.application.api.DesbravadorRequest;
+import com.desbravadores.terras.desbravadores.application.api.SocioRequest;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Document(collection = "desbravadores")
-public class Desbravadores {
+public class SocioCT {
 	@Id
 	private UUID idDesbravador;
 	@NotBlank
@@ -29,9 +29,8 @@ public class Desbravadores {
 	private Integer idade;
 	@NotNull
 	private LocalDate dataDeNascimento;
-	private Classe classe;
 	
-	public Desbravadores(DesbravadorRequest novoDesbravador) {
+	public SocioCT(SocioRequest novoDesbravador) {
 		this.idDesbravador = UUID.randomUUID();
 		this.nome = novoDesbravador.getNome();
 		this.sexo = novoDesbravador.getSexo();

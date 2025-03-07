@@ -6,7 +6,7 @@ import com.desbravadores.terras.desbravadores.domain.Sexo;
 
 import lombok.Value;
 @Value
-public class DesbravadorRequest {
+public class SocioRequest {
 	private String nome;
 	private Sexo sexo;
 	private Integer idade;
