@@ -1,6 +1,9 @@
 package com.desbravadores.terras.desbravadores.application.api;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,4 +18,8 @@ public interface SocioAPI {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	SocioResponse criaSocio(@RequestBody @Valid SocioRequest novoSocio);
+	
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	List<SocioListResponse> getTodosSocios();
 }

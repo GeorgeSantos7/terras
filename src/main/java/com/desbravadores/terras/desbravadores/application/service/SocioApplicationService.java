@@ -1,7 +1,10 @@
 package com.desbravadores.terras.desbravadores.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.desbravadores.terras.desbravadores.application.api.SocioListResponse;
 import com.desbravadores.terras.desbravadores.application.api.SocioRequest;
 import com.desbravadores.terras.desbravadores.application.api.SocioResponse;
 import com.desbravadores.terras.desbravadores.application.repository.SocioRepository;
@@ -22,6 +25,13 @@ public class SocioApplicationService implements SocioService {
 		SocioCT socioCT = desbravadorRepository.salva(new SocioCT(novoSocio));
 		log.info("[finaliza] DesbravadorApplicationService - criaDesbravador");
 		return new SocioResponse(socioCT);
+	}
+
+	@Override
+	public List<SocioListResponse> buscaTodosSocios() {
+		log.info("[inicia] SocioApplicationService - buscaTodosSocios");
+		log.info("[finaliza] SocioApplicationService - buscaTodosSocios");
+		return null;
 	}
 
 }

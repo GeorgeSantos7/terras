@@ -1,5 +1,7 @@
 package com.desbravadores.terras.desbravadores.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desbravadores.terras.desbravadores.application.service.SocioService;
@@ -20,6 +22,14 @@ public class SocioController implements SocioAPI {
 		SocioResponse socioCriado = desbravadorService.criaNovoSocio(novoSocio);
 		log.info("[finaliza] DesbravadorController - criaDesbravador");
 		return socioCriado;
+	}
+
+	@Override
+	public List<SocioListResponse> getTodosSocios() {
+			log.info("[inicia] DesbravadorController - buscaTodosSocios");
+			List<SocioListResponse> socios = desbravadorService.buscaTodosSocios();
+			log.info("[finaliza] DesbravadorController - buscaTodosSocios");
+			return socios;
 	}
 
 }
