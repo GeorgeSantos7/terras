@@ -11,4 +11,6 @@ public class SocioRequest {
 	private Sexo sexo;
 	private Integer idade;
 	private LocalDate dataDeNascimento;
+	private String telefone;
+	private EnderecoRequest endereco;
 }
