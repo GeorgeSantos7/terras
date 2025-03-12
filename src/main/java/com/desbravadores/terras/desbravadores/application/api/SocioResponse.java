@@ -12,6 +12,7 @@ import lombok.Data;
 @Data
 public class SocioResponse {
 	private UUID idSocio;
+	private String cpf;
 	private String nome;
 	private Sexo sexo;
 	private Integer idade;
@@ -21,10 +22,12 @@ public class SocioResponse {
 
 	public SocioResponse(SocioCT desbravadores) {
 		this.idSocio = desbravadores.getIdSocio();
+		this.cpf = desbravadores.getCpf();
 		this.nome = desbravadores.getNome();
 		this.sexo = desbravadores.getSexo();
 		this.idade = desbravadores.getIdade();
 		this.dataDeNascimento = desbravadores.getDataDeNascimento();
+		this.telefone = desbravadores.getTelefone();
 		this.endereco = desbravadores.getEndereco();
 	}
 }

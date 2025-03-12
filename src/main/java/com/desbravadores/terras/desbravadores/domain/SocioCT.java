@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,6 +24,8 @@ import lombok.NoArgsConstructor;
 public class SocioCT {
 	@Id
 	private UUID idSocio;
+	@CPF
+	private String cpf;
 	@NotBlank
 	private String nome;
 	private Sexo sexo;
@@ -38,10 +41,12 @@ public class SocioCT {
 	
 	public SocioCT(SocioRequest novoDesbravador) {
 		this.idSocio = UUID.randomUUID();
+		this.cpf = novoDesbravador.getCpf();
 		this.nome = novoDesbravador.getNome();
 		this.sexo = novoDesbravador.getSexo();
 		this.idade = novoDesbravador.getIdade();
 		this.dataDeNascimento = novoDesbravador.getDataDeNascimento();
+		this.telefone = novoDesbravador.getTelefone();
 		this.endereco = new Endereco(novoDesbravador.getEndereco());
 	}
 }
