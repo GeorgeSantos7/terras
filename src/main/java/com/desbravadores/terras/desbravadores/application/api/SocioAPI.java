@@ -19,7 +19,7 @@ public interface SocioAPI {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	SocioResponse criaSocio(@RequestBody @Valid SocioRequest novoSocio);
 	
-	@GetMapping
+	@GetMapping(value = "/buscaTodos")
 	@ResponseStatus(code = HttpStatus.OK)
-	List<SocioListResponse> getTodosSocios();
+	List<SocioListResponse> buscaTodosSocios();
 }

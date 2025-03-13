@@ -25,7 +25,7 @@ public class SocioController implements SocioAPI {
 	}
 
 	@Override
-	public List<SocioListResponse> getTodosSocios() {
+	public List<SocioListResponse> buscaTodosSocios() {
 			log.info("[inicia] DesbravadorController - buscaTodosSocios");
 			List<SocioListResponse> socios = desbravadorService.buscaTodosSocios();
 			log.info("[finaliza] DesbravadorController - buscaTodosSocios");

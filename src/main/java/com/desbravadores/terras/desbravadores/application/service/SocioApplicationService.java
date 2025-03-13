@@ -30,8 +30,9 @@ public class SocioApplicationService implements SocioService {
 	@Override
 	public List<SocioListResponse> buscaTodosSocios() {
 		log.info("[inicia] SocioApplicationService - buscaTodosSocios");
-		log.info("[finaliza] SocioApplicationService - buscaTodosSocios");
-		return null;
-	}
+		List<SocioCT> socios = desbravadorRepository.buscaTodosSocios();
+		log.info("[finaliza] SocioApplicationService - buscaTodasPessoas");
+		return SocioListResponse.converte(socios);
+	} 
 
 }

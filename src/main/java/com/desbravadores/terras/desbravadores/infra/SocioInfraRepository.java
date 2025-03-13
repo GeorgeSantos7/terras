@@ -1,5 +1,7 @@
 package com.desbravadores.terras.desbravadores.infra;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +25,13 @@ public class SocioInfraRepository implements SocioRepository {
 		log.info("[finaliza] DesbravadorInfraRepository - salva");
 		return novoDesbravador;
 	}
+
+	@Override
+	public List<SocioCT> buscaTodosSocios() {
+		log.info("[inicia] DesbravadorInfraRepository - salva");
+		List<SocioCT> todosSocios = desbravadorSpringDataJPARepository.findAll();
+		log.info("[finaliza] DesbravadorInfraRepository - salva");
+		return todosSocios;
+	} 
 
 }

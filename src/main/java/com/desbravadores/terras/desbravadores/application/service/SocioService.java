@@ -10,6 +10,6 @@ public interface SocioService {
 
 	SocioResponse criaNovoSocio(SocioRequest novoDesbravador);
 
-	List<SocioListResponse> buscaTodosSocios();
+		List<SocioListResponse> buscaTodosSocios(); 
 
 }
