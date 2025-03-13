@@ -1,5 +1,7 @@
 package com.desbravadores.terras.desbravadores.application.api;
 
+import java.util.UUID;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desbravadores.terras.desbravadores.application.service.SocioService;
@@ -22,4 +24,11 @@ public class SocioController implements SocioAPI {
 		return socioCriado;
 	}
 
+	@Override
+	public SocioDetalhadoResponse getSocioAtravesId(UUID idSocio) {
+		log.info("[inicia] SocioController - getSocioAtravesId");
+		log.info ("[idSocio] {}", idSocio);
+		log.info("[Finaliza] SocioController - getSocioAtravesId");
+		return null;
+	}
 }
