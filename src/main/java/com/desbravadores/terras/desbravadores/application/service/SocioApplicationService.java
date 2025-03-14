@@ -1,5 +1,7 @@
 package com.desbravadores.terras.desbravadores.application.service;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 import com.desbravadores.terras.desbravadores.application.api.SocioRequest;
@@ -22,6 +24,14 @@ public class SocioApplicationService implements SocioService {
 		SocioCT socioCT = desbravadorRepository.salva(new SocioCT(novoSocio));
 		log.info("[finaliza] DesbravadorApplicationService - criaDesbravador");
 		return new SocioResponse(socioCT);
+	}
+
+	@Override
+	public SocioCT buscaSocioPorId(UUID idSocio) {
+		log.info("[inicia] DesbravadorApplicationService - buscaSocioPorId");
+		SocioCT socio = desbravadorRepository.buscaSocioPorId(idSocio);
+		log.info("[Finaliza] DesbravadorApplicationService - buscaSocioPorId");
+		return socio;
 	}
 
 }

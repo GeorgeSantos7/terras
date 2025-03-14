@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desbravadores.terras.desbravadores.application.service.SocioService;
+import com.desbravadores.terras.desbravadores.domain.SocioCT;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -28,7 +29,8 @@ public class SocioController implements SocioAPI {
 	public SocioDetalhadoResponse getSocioAtravesId(UUID idSocio) {
 		log.info("[inicia] SocioController - getSocioAtravesId");
 		log.info ("[idSocio] {}", idSocio);
+		SocioCT socio = desbravadorService.buscaSocioPorId(idSocio);
 		log.info("[Finaliza] SocioController - getSocioAtravesId");
-		return null;
+		return new SocioDetalhadoResponse(socio);
 	}
 }

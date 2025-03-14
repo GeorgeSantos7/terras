@@ -1,5 +1,7 @@
 package com.desbravadores.terras.desbravadores.infra;
 
+import java.util.UUID;
+
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +24,14 @@ public class SocioInfraRepository implements SocioRepository {
 		SocioCT novoDesbravador = desbravadorSpringDataJPARepository.save(desbravadores);
 		log.info("[finaliza] DesbravadorInfraRepository - salva");
 		return novoDesbravador;
+	}
+
+	@Override
+	public SocioCT buscaSocioPorId(UUID idSocio) {
+		log.info("[inicia] DesbravadorInfraRepository - buscaSocioPorId");
+		SocioCT socio = desbravadorSpringDataJPARepository.findByIdSocio(idSocio);
+		log.info("[finaliza] DesbravadorInfraRepository - buscaSocioPorId");
+		return socio;
 	}
 
 }
