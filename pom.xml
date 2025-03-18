@@ -9,7 +9,7 @@
 		<version>3.2.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.desbravadores</groupId>
+	<groupId>br.com.desbravadores</groupId>
 	<artifactId>terras</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>terras</name>

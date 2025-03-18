@@ -1,4 +1,4 @@
-package com.desbravadores.terras.desbravadores.domain;
+package br.com.desbravadores.terras.desbravadores.domain;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,8 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.desbravadores.terras.desbravadores.application.api.SocioRequest;
-
+import br.com.desbravadores.terras.desbravadores.application.api.SocioRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -35,6 +34,7 @@ public class SocioCT {
 	private LocalDate dataDeNascimento;
 	private String telefone;
 	private Endereco endereco;
+	private Planos planos;
 	
 	private LocalDateTime dataDeCadastro;
 	private Boolean aceitaTermos;

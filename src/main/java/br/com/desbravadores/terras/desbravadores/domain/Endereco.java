@@ -1,11 +1,10 @@
-package com.desbravadores.terras.desbravadores.domain;
+package br.com.desbravadores.terras.desbravadores.domain;
 
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-import com.desbravadores.terras.desbravadores.application.api.EnderecoRequest;
-
+import br.com.desbravadores.terras.desbravadores.application.api.EnderecoRequest;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Getter;

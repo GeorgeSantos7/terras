@@ -1,4 +1,4 @@
-package com.desbravadores.terras;
+package br.com.desbravadores.terras;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

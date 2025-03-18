@@ -1,12 +1,11 @@
-package com.desbravadores.terras.desbravadores.application.service;
+package br.com.desbravadores.terras.desbravadores.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.desbravadores.terras.desbravadores.application.api.SocioRequest;
-import com.desbravadores.terras.desbravadores.application.api.SocioResponse;
-import com.desbravadores.terras.desbravadores.application.repository.SocioRepository;
-import com.desbravadores.terras.desbravadores.domain.SocioCT;
-
+import br.com.desbravadores.terras.desbravadores.application.api.SocioRequest;
+import br.com.desbravadores.terras.desbravadores.application.api.SocioResponse;
+import br.com.desbravadores.terras.desbravadores.application.repository.SocioRepository;
+import br.com.desbravadores.terras.desbravadores.domain.SocioCT;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 @Service
