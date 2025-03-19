@@ -15,9 +15,9 @@ public class SocioController implements SocioAPI {
 
 	@Override
 	public SocioResponse criaSocio(SocioRequest novoSocio) {
-		log.info("[inicia] DesbravadorController - criaSocio");
+		log.info("[inicia] SocioController - criaSocio");
 		SocioResponse socioCriado = socioService.criaNovoSocio(novoSocio);
-		log.info("[finaliza] DesbravadorController - criaSocio");
+		log.info("[finaliza] SocioController - criaSocio");
 		return socioCriado;
 	}
 

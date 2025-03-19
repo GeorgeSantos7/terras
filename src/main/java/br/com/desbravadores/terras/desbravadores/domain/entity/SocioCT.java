@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.desbravadores.domain;
+package br.com.desbravadores.terras.desbravadores.domain.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,6 +9,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.desbravadores.terras.desbravadores.application.api.SocioRequest;
+import br.com.desbravadores.terras.desbravadores.domain.enums.Sexo;
+import br.com.desbravadores.terras.desbravadores.domain.enums.StatusAssinatura;
+import br.com.desbravadores.terras.desbravadores.domain.enums.StatusSocio;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -19,7 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Document(collection = "desbravadores")
+@Document(collection = "socio")
 public class SocioCT {
 	@Id
 	private UUID idSocio;
@@ -27,6 +31,8 @@ public class SocioCT {
 	private String cpf;
 	@NotBlank
 	private String nome;
+	@Email
+	private String email;
 	private Sexo sexo;
 	@NotNull
 	private Integer idade;
@@ -34,19 +40,21 @@ public class SocioCT {
 	private LocalDate dataDeNascimento;
 	private String telefone;
 	private Endereco endereco;
-	private Planos planos;
-	
+	private StatusSocio status;
+	private StatusAssinatura statusAssinatura;
 	private LocalDateTime dataDeCadastro;
 	private Boolean aceitaTermos;
 	
-	public SocioCT(SocioRequest novoDesbravador) {
+	public SocioCT(SocioRequest novoSocio) {
 		this.idSocio = UUID.randomUUID();
-		this.cpf = novoDesbravador.getCpf();
-		this.nome = novoDesbravador.getNome();
-		this.sexo = novoDesbravador.getSexo();
-		this.idade = novoDesbravador.getIdade();
-		this.dataDeNascimento = novoDesbravador.getDataDeNascimento();
-		this.telefone = novoDesbravador.getTelefone();
-		this.endereco = new Endereco(novoDesbravador.getEndereco());
+		this.cpf = novoSocio.getCpf();
+		this.nome = novoSocio.getNome();
+		this.email = novoSocio.getEmail();
+		this.sexo = novoSocio.getSexo();
+		this.idade = novoSocio.getIdade();
+		this.dataDeNascimento = novoSocio.getDataDeNascimento();
+		this.telefone = novoSocio.getTelefone();
+		this.endereco = new Endereco(novoSocio.getEndereco());
+		this.dataDeCadastro = LocalDateTime.now();
 	}
 }
