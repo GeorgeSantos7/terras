@@ -1,8 +1,8 @@
-package br.com.desbravadores.terras.desbravadores.application.api;
+package br.com.desbravadores.terras.socio.application.api;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.desbravadores.terras.desbravadores.application.service.SocioService;
+import br.com.desbravadores.terras.socio.application.service.SocioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 

@@ -1,11 +1,11 @@
-package br.com.desbravadores.terras.desbravadores.domain.entity;
+package br.com.desbravadores.terras.socio.domain.entity;
 
 import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import br.com.desbravadores.terras.desbravadores.domain.enums.StatusAssinatura;
+import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

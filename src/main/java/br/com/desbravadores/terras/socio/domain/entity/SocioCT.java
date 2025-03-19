@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.desbravadores.domain.entity;
+package br.com.desbravadores.terras.socio.domain.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,10 +8,10 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import br.com.desbravadores.terras.desbravadores.application.api.SocioRequest;
-import br.com.desbravadores.terras.desbravadores.domain.enums.Sexo;
-import br.com.desbravadores.terras.desbravadores.domain.enums.StatusAssinatura;
-import br.com.desbravadores.terras.desbravadores.domain.enums.StatusSocio;
+import br.com.desbravadores.terras.socio.application.api.SocioRequest;
+import br.com.desbravadores.terras.socio.domain.enums.Sexo;
+import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
+import br.com.desbravadores.terras.socio.domain.enums.StatusSocio;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

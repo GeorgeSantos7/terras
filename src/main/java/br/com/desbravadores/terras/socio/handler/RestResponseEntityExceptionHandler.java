@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.desbravadores.handler;
+package br.com.desbravadores.terras.socio.handler;
 
 import java.util.HashMap;
 import java.util.Map;

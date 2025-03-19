@@ -1,10 +1,10 @@
-package br.com.desbravadores.terras.desbravadores.infra;
+package br.com.desbravadores.terras.socio.infra;
 
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
 
-import br.com.desbravadores.terras.desbravadores.application.repository.SocioRepository;
-import br.com.desbravadores.terras.desbravadores.domain.entity.SocioCT;
+import br.com.desbravadores.terras.socio.application.repository.SocioRepository;
+import br.com.desbravadores.terras.socio.domain.entity.SocioCT;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 @Repository
