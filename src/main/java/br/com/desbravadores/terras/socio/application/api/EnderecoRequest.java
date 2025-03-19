@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.desbravadores.application.api;
+package br.com.desbravadores.terras.socio.application.api;
 
 import lombok.Value;
 @Value

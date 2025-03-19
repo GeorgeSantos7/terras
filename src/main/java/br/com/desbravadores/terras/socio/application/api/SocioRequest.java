@@ -1,10 +1,10 @@
-package br.com.desbravadores.terras.desbravadores.application.api;
+package br.com.desbravadores.terras.socio.application.api;
 
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import br.com.desbravadores.terras.desbravadores.domain.enums.Sexo;
+import br.com.desbravadores.terras.socio.domain.enums.Sexo;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Value;
 @Value
