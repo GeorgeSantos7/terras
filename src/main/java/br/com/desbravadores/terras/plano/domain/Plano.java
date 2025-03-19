@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.socio.domain.entity;
+package br.com.desbravadores.terras.plano.domain;
 
 import java.util.List;
 import java.util.UUID;

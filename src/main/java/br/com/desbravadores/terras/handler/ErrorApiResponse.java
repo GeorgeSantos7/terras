@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.socio.handler;
+package br.com.desbravadores.terras.handler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
