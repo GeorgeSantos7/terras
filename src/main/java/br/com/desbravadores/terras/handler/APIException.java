@@ -1,4 +1,4 @@
-package br.com.desbravadores.terras.socio.handler;
+package br.com.desbravadores.terras.handler;
 
 import java.util.Optional;
 
