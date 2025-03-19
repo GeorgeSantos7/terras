@@ -1,6 +1,7 @@
 package br.com.desbravadores.terras.desbravadores.domain.entity;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Document(collection = "planos")
 public class Plano {
 	@Id
-    private String idPlano;
+    private UUID idPlano;
     private String nomePlano;
     private Double valorMensal;
     private List<Beneficio> beneficios;
