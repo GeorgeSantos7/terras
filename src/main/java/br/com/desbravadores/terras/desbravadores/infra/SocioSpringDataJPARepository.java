@@ -1,10 +1,10 @@
-package com.desbravadores.terras.desbravadores.infra;
+package br.com.desbravadores.terras.desbravadores.infra;
 
 import java.util.UUID;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.desbravadores.terras.desbravadores.domain.SocioCT;
+import br.com.desbravadores.terras.desbravadores.domain.entity.SocioCT;
 
 public interface SocioSpringDataJPARepository extends MongoRepository<SocioCT, UUID> {
 
