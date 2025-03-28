@@ -1,4 +1,4 @@
-package com.desbravadores.terras;
+package br.com.desbravadores.terras;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

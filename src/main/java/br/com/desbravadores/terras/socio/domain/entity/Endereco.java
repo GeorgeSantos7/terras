@@ -2,13 +2,16 @@ package br.com.desbravadores.terras.socio.domain.entity;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
 
 import br.com.desbravadores.terras.socio.application.api.EnderecoRequest;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Endereco {
