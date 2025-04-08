@@ -32,8 +32,25 @@ public class FiltroToken extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         log.info("[inicio] Filtro - filtrando requisicao");
-        String token = recuperaToken(request);
-        autenticaCliente(token);
+
+        String path = request.getRequestURI();
+        log.info("Path da requisição: {}", path);
+
+        // Ignorar autenticação para rotas públicas
+        if (path.startsWith("/terras/api/auth") || path.startsWith("/terras/api/admin")) {
+            log.info("Rota pública detectada. Ignorando autenticação.");
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        try {
+            String token = recuperaToken(request);
+            autenticaCliente(token);
+        } catch (Exception e) {
+            log.error("Erro ao autenticar token: {}", e.getMessage(), e);
+            throw e; // Deixe o handler global cuidar disso, se tiver
+        }
+
         log.info("[finaliza] Filtro - filtrando requisicao");
         filterChain.doFilter(request, response);
     }
