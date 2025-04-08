@@ -18,3 +18,9 @@ terras:
   jwt:
     expiracao: ${JWT_TEMPO_EXPIRACAO:15}
     chave: ${JWT_CHAVE:123456}
+
+admin:
+  init:
+    nome: Administrador do Sistema
+    email: admin@terras.com
+    senha: 123456
