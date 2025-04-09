@@ -6,6 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.desbravadores.terras.plano.domain.Plano;
 import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.desbravadores.terras.socio.domain.enums.Sexo;
@@ -26,5 +27,6 @@ public class SocioRequest {
 	private LocalDate dataDeNascimento;
 	@NotBlank
 	private String telefone;
+	private Plano plano;
 	private EnderecoRequest endereco;
 }
