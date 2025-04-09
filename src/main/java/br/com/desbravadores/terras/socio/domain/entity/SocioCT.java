@@ -1,18 +1,7 @@
 package br.com.desbravadores.terras.socio.domain.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.UUID;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
+import br.com.desbravadores.terras.socio.domain.enums.Planos;
 import br.com.desbravadores.terras.socio.domain.enums.Sexo;
 import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
 import br.com.desbravadores.terras.socio.domain.enums.StatusSocio;
@@ -20,6 +9,16 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -41,6 +40,7 @@ public class SocioCT {
 	@NotNull
 	private LocalDate dataDeNascimento;
 	private String telefone;
+	private Planos plano;
 	private Endereco endereco;
 	private StatusSocio status;
 	private StatusAssinatura statusAssinatura;
@@ -56,6 +56,7 @@ public class SocioCT {
 		this.idade = novoSocio.getIdade();
 		this.dataDeNascimento = novoSocio.getDataDeNascimento();
 		this.telefone = novoSocio.getTelefone();
+		this.plano = Planos.SEM_PLANO;
 		this.endereco = new Endereco(novoSocio.getEndereco());
 		this.dataDeCadastro = LocalDateTime.now();
 	}

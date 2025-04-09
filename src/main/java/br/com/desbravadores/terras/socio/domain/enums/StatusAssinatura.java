@@ -1,5 +1,5 @@
 package br.com.desbravadores.terras.socio.domain.enums;
 
 public enum StatusAssinatura {
-	ATIVO, CANCELADO;
+	ATIVO, CANCELADO, NENHUM;
 }
