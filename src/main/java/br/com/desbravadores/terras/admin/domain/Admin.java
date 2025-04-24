@@ -16,15 +16,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class Admin {
-    @Id
-    private UUID id;
     private String email;
     private String senha;
     private Role role;
 
     public Admin(AdminRequest adminRequest) {
-        this.id = UUID.randomUUID();
-        this.email = adminRequest.getEmail();
-        this.senha = adminRequest.getSenha();
+        this.role = Role.ADMIN;
     }
 }

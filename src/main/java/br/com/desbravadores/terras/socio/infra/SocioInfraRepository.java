@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -36,4 +37,11 @@ public class SocioInfraRepository implements SocioRepository {
 		return socioCT;
 	}
 
+	@Override
+	public List<SocioCT> buscaTodasSocios() {
+		log.info("[inicia] SocioInfraRepository buscaTodasSocios");
+		List<SocioCT> socios = socioSpringDataJPARepository.findAll();
+		log.info("[finaliza] SocioInfraRepository buscaTodasSocios");
+		return socios;
+	}
 }

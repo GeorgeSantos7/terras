@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface AdminRepository {
     Admin salva(Admin admin);
-    Optional<Object> buscaPorEmail(String email);
+    Optional<Admin> buscaPorEmail(String email);
 }

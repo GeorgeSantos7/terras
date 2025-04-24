@@ -23,7 +23,7 @@ public class AdminInfraRepository implements AdminRepository {
     }
 
     @Override
-    public Optional<Object> buscaPorEmail(String email) {
+    public Optional<Admin> buscaPorEmail(String email) {
         return adminSpringDataJPARepository.findByEmail(email);
     }
 }

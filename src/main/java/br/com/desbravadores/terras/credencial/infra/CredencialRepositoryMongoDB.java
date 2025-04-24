@@ -1,6 +1,7 @@
 package br.com.desbravadores.terras.credencial.infra;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import br.com.desbravadores.terras.credencial.application.repository.CredencialRepository;
@@ -27,7 +28,7 @@ public class CredencialRepositoryMongoDB implements CredencialRepository {
 	public Credencial buscaCredencialPorUsuario(String usuario) {
 		log.info("[start] CredencialRepositoryMongoDB - buscaCredencialPorUsuario");
 		var credencial = credencialMongoRepository.findByUsuario(usuario)
-				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Não existe credencial para o Usuario informado!"));
+				.orElseThrow(() ->  new UsernameNotFoundException("Não existe credencial para o Usuario informado!"));
 		log.info("[start] CredencialRepositoryMongoDB - buscaCredencialPorUsuario");
 		return credencial;
 	}
