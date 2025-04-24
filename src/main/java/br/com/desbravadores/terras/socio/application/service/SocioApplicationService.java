@@ -1,10 +1,12 @@
 package br.com.desbravadores.terras.socio.application.service;
 
 import br.com.desbravadores.terras.credencial.application.service.CredencialService;
+import br.com.desbravadores.terras.socio.application.api.AssinaturaResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
 import br.com.desbravadores.terras.socio.application.repository.SocioRepository;
+import br.com.desbravadores.terras.socio.domain.entity.Assinatura;
 import br.com.desbravadores.terras.socio.domain.entity.SocioCT;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -34,6 +36,14 @@ public class SocioApplicationService implements SocioService {
 		SocioCT socioCT = socioRepository.buscaSocioPorId(idSocio);
 		log.info("[finaliza] SocioApplicationService - buscaSocioPorId");
 		return new SocioDetalhadoResponse(socioCT);
+	}
+
+	@Override
+	public AssinaturaResponse buscaAssinaturaDoSocioPorId(UUID idSocio) {
+		log.info("[inicia] SocioApplicationService - buscaAssinaturaDoSocioPorId");
+		Assinatura assinatura = socioRepository.buscaAssinaturaPorId(idSocio);
+		log.info("[finaliza] SocioApplicationService - buscaAssinaturaDoSocioPorId");
+		return new AssinaturaResponse(assinatura);
 	}
 
 }

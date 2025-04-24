@@ -2,6 +2,7 @@ package br.com.desbravadores.terras.socio.infra;
 
 import br.com.desbravadores.terras.handler.APIException;
 import br.com.desbravadores.terras.socio.application.repository.SocioRepository;
+import br.com.desbravadores.terras.socio.domain.entity.Assinatura;
 import br.com.desbravadores.terras.socio.domain.entity.SocioCT;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -34,6 +35,15 @@ public class SocioInfraRepository implements SocioRepository {
 				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "Socio não encontrado!"));
 		log.info("[finaliza] SocioInfraRepository buscaSocioPorId");
 		return socioCT;
+	}
+
+	@Override
+	public Assinatura buscaAssinaturaPorId(UUID idSocio) {
+		log.info("[inicia] SocioInfraRepository buscaAssinaturaPorId");
+		Assinatura assinatura = (Assinatura) socioSpringDataJPARepository.findByIdSocio(idSocio)
+				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "Socio não encontrado!"));
+		log.info("[finaliza] SocioInfraRepository buscaAssinaturaPorId");
+		return assinatura;
 	}
 
 }

@@ -31,4 +31,12 @@ public class SocioController implements SocioAPI {
 		return detalhaSocio;
 	}
 
+	@Override
+	public AssinaturaResponse buscaAssinaturaDoSocioPorId(UUID idSocio) {
+		log.info("[inicia] SocioController - buscaAssinaturaDoSocioPorId");
+		AssinaturaResponse response = socioService.buscaAssinaturaDoSocioPorId(idSocio);
+		log.info("[finaliza] SocioController - buscaAssinaturaDoSocioPorId");
+		return response;
+	}
+
 }
