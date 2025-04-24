@@ -10,6 +10,9 @@ import lombok.Value;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Value
 public class SocioDetalhadoResponse {
     private String cpf;
@@ -38,5 +41,10 @@ public class SocioDetalhadoResponse {
         this.status = StatusSocio.ATIVO;
         this.statusAssinatura = StatusAssinatura.NENHUM;
         this.dataDeCadastro = socioCT.getDataDeCadastro();
+    }
+    public static List<SocioDetalhadoResponse> converte(List<SocioCT> socios) {
+        return socios.stream()
+                .map(SocioDetalhadoResponse::new)
+                .collect(Collectors.toList());
     }
 }

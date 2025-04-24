@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -15,7 +16,11 @@ public interface SocioAPI {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	SocioResponse criaSocio(@RequestBody @Valid SocioRequest novoSocio);
 
-	@GetMapping("/socios/{idSocio}")
-	@ResponseStatus(HttpStatus.OK)
+	@GetMapping("/socio/{idSocio}")
+	@ResponseStatus(code = HttpStatus.OK)
 	SocioDetalhadoResponse detalhaSocioPorId(@PathVariable UUID idSocio);
+
+	@GetMapping("/socios")
+	@ResponseStatus(code = HttpStatus.OK)
+	List<SocioDetalhadoResponse> listaSocios();
 }

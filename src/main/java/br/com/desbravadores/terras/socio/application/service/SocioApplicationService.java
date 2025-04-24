@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -36,4 +37,10 @@ public class SocioApplicationService implements SocioService {
 		return new SocioDetalhadoResponse(socioCT);
 	}
 
+	@Override
+	public List<SocioDetalhadoResponse> buscaTodasSocios() {
+		log.info("[inicia] SocioApplicationService - buscaTodasSocios");
+		List<SocioCT> socios = socioRepository.buscaTodasSocios();
+		return SocioDetalhadoResponse.converte(socios);
+	}
 }

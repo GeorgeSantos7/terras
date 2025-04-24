@@ -1,6 +1,7 @@
 package br.com.desbravadores.terras.credencial.domain;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -26,6 +28,8 @@ public class Credencial implements UserDetails {
 	@NotNull
 	@Size(max = 60)
 	private String senha;
+
+	private TipoCredencial tipoCredencial;
 	
 	@Getter
 	private boolean validado;
@@ -35,6 +39,7 @@ public class Credencial implements UserDetails {
 		var encriptador = new BCryptPasswordEncoder();
 		this.senha = encriptador.encode(senha);
 		this.validado = true;
+		this.tipoCredencial = TipoCredencial.USUARIO;
 	}
 
 	public void encriptaSenha() {
@@ -48,8 +53,12 @@ public class Credencial implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		if (this.tipoCredencial == null) {
+			return List.of(); // Ou lançar exceção customizada
+		}
+		return List.of(new SimpleGrantedAuthority("ROLE_" + this.tipoCredencial.name()));
 	}
+
 
 	@Override
 	public String getPassword() {

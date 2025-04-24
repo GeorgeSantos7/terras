@@ -7,15 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/admin")
 public interface AdminAPI {
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    AdminResponse criaAdmin(@RequestBody @Valid AdminRequest adminRequest);
-
     @PostMapping("/socio")
     @ResponseStatus(HttpStatus.CREATED)
     SocioResponse adminCriaSocio(@RequestBody @Valid SocioRequest socioRequest);
@@ -23,4 +20,8 @@ public interface AdminAPI {
     @GetMapping("/socio/{idSocio}")
     @ResponseStatus(HttpStatus.OK)
     SocioDetalhadoResponse adminBuscaSocioPorId(@PathVariable UUID idSocio);
+
+    @GetMapping("/busca-socios")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<SocioDetalhadoResponse> listaSocios();
 }

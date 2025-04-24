@@ -6,6 +6,7 @@ import br.com.desbravadores.terras.socio.application.service.SocioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,6 +30,14 @@ public class SocioController implements SocioAPI {
 		SocioDetalhadoResponse detalhaSocio = socioService.buscaSocioPorId(idSocio);
 		log.info("[finaliza] SocioController - detalhaSocioPorId");
 		return detalhaSocio;
+	}
+
+	@Override
+	public List<SocioDetalhadoResponse> listaSocios() {
+		log.info("[inicia] SocioController - listaSocios");
+		List<SocioDetalhadoResponse> socio = socioService.buscaTodasSocios();
+		log.info("[finaliza] SocioController - listaSocios");
+		return socio;
 	}
 
 }

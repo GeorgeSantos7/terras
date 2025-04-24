@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AdminSpringDataJPARepository extends MongoRepository<Admin, UUID> {
-    Optional<Object> findByEmail(String email);
+    Optional<Admin> findByEmail(String email);
 }
