@@ -26,7 +26,6 @@ public class PlanoController implements PlanoAPI {
     }
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
     public List<PlanosListResponse> buscaPlanos() {
         log.info("[inicia] PlanoController - buscaPlanos");
         List<PlanosListResponse> planos = planoService.buscaPlanos();

@@ -1,5 +1,6 @@
 package br.com.desbravadores.terras.admin.application.api;
 
+import br.com.desbravadores.terras.plano.application.api.PlanosListResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
@@ -24,4 +25,8 @@ public interface AdminAPI {
     @GetMapping("/busca-socios")
     @ResponseStatus(code = HttpStatus.OK)
     List<SocioDetalhadoResponse> listaSocios();
+
+    @GetMapping(value = "/planos")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<PlanosListResponse> buscaPlanos();
 }

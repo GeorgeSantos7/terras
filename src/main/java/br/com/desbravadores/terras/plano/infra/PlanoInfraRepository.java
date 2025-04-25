@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -32,5 +34,13 @@ public class PlanoInfraRepository implements PlanoRepository {
         List<Plano> planos = planoSpringDataJPARepository.findAll();
         log.info("[finaliza] PlanoInfraRepository - buscaPlanos");
         return planos;
+    }
+
+    @Override
+    public Optional<Plano> buscaPlanoPorId(UUID idPlano) {
+        log.info("[inicia] PlanoInfraRepository - buscaPlanoPorId");
+        Optional<Plano> plano = planoSpringDataJPARepository.findById(idPlano);
+        log.info("[finaliza] PlanoInfraRepository - buscaPlanoPorId");
+        return plano;
     }
 }

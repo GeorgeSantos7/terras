@@ -29,4 +29,8 @@ public class Plano {
         this.valorMensal = novoPlano.getValorMensal();
         this.beneficios = novoPlano.getBeneficios();
     }
+
+    public Plano(UUID idPlano) {
+        this.idPlano = idPlano;
+    }
 }

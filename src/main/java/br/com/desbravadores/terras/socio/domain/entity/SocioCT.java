@@ -3,7 +3,7 @@ package br.com.desbravadores.terras.socio.domain.entity;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.domain.enums.Planos;
 import br.com.desbravadores.terras.socio.domain.enums.Sexo;
-import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
+import br.com.desbravadores.terras.assinatura.domain.StatusAssinatura;
 import br.com.desbravadores.terras.socio.domain.enums.StatusSocio;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -59,5 +59,9 @@ public class SocioCT {
 		this.plano = Planos.SEM_PLANO;
 		this.endereco = new Endereco(novoSocio.getEndereco());
 		this.dataDeCadastro = LocalDateTime.now();
+	}
+
+	public SocioCT(UUID idSocio) {
+		this.idSocio = idSocio;
 	}
 }

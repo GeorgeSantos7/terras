@@ -4,7 +4,7 @@ import br.com.desbravadores.terras.socio.domain.entity.Endereco;
 import br.com.desbravadores.terras.socio.domain.entity.SocioCT;
 import br.com.desbravadores.terras.socio.domain.enums.Planos;
 import br.com.desbravadores.terras.socio.domain.enums.Sexo;
-import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
+import br.com.desbravadores.terras.assinatura.domain.StatusAssinatura;
 import br.com.desbravadores.terras.socio.domain.enums.StatusSocio;
 import lombok.Value;
 
