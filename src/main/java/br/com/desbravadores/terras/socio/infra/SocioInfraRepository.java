@@ -31,7 +31,7 @@ public class SocioInfraRepository implements SocioRepository {
 	@Override
 	public SocioCT buscaSocioPorId(UUID idSocio) {
 		log.info("[inicia] SocioInfraRepository buscaSocioPorId");
-		SocioCT socioCT = (SocioCT) socioSpringDataJPARepository.findByIdSocio(idSocio)
+		SocioCT socioCT = (SocioCT) socioSpringDataJPARepository.findById(idSocio)
 				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "Socio não encontrado!"));
 		log.info("[finaliza] SocioInfraRepository buscaSocioPorId");
 		return socioCT;

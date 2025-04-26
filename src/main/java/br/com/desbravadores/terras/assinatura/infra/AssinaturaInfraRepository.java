@@ -7,6 +7,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
 @RequiredArgsConstructor
 @Log4j2
@@ -20,5 +23,16 @@ public class AssinaturaInfraRepository implements AssinaturaRepository {
         Assinatura novaAssinatura = assinaturaSpringDataJPARepository.save(assinatura);
         log.info("[finaliza] AssinaturaInfraRepository - salva");
         return novaAssinatura;
+    }
+
+    @Override
+    public Optional<Assinatura> buscaAssinaturaPorId(UUID idAssinatura) {
+        log.info("[inicia] AssinaturaInfraRepository buscaAssinaturaPorId");
+        Optional<Assinatura> assinatura = assinaturaSpringDataJPARepository.findByIdAssinatura(idAssinatura);
+        if (assinatura.isEmpty()) {
+            log.error("Assinatura não encontrada!");
+        }
+        log.info("[finaliza] AssinaturaInfraRepository buscaAssinaturaPorId");
+        return assinatura;
     }
 }

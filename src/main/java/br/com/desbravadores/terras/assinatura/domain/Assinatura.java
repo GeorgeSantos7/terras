@@ -1,8 +1,8 @@
 package br.com.desbravadores.terras.assinatura.domain;
 
 import br.com.desbravadores.terras.assinatura.application.api.AssinaturaRequest;
-import br.com.desbravadores.terras.plano.domain.Plano;
 import br.com.desbravadores.terras.socio.domain.entity.SocioCT;
+import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,11 +26,29 @@ public class Assinatura {
     private SocioCT socio;
     private LocalDate dataInicio;
     private LocalDate dataTermino;
-    private StatusAssinatura status;
 
     @JsonCreator
     public Assinatura(AssinaturaRequest assinaturaRequest) {
         this.idAssinatura = UUID.randomUUID();
         this.idPlano = assinaturaRequest.getIdPlano();
+        this.dataInicio = LocalDate.now();
+        this.dataTermino = null;
+    }
+
+    public void setSocio(SocioCT socio) {
+        this.socio = socio;
+    }
+
+    public void setDataInicio(LocalDate now) {
+        this.dataInicio = now;
+    }
+
+    public void setDataTermino(LocalDate localDate) {
+        this.dataTermino = localDate;
+
+    }
+
+    public void setStatus(StatusAssinatura statusAssinatura) {
+        this.socio.setStatusAssinatura(statusAssinatura);
     }
 }

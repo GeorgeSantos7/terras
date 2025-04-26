@@ -3,15 +3,13 @@ package br.com.desbravadores.terras.socio.domain.entity;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.domain.enums.Planos;
 import br.com.desbravadores.terras.socio.domain.enums.Sexo;
-import br.com.desbravadores.terras.assinatura.domain.StatusAssinatura;
+import br.com.desbravadores.terras.socio.domain.enums.StatusAssinatura;
 import br.com.desbravadores.terras.socio.domain.enums.StatusSocio;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -42,7 +40,10 @@ public class SocioCT {
 	private String telefone;
 	private Planos plano;
 	private Endereco endereco;
-	private StatusSocio status;
+	@Setter
+    private StatusSocio status;
+	@Setter
+    @Field("statusAssinatura")
 	private StatusAssinatura statusAssinatura;
 	private LocalDateTime dataDeCadastro;
 	private Boolean aceitaTermos;
@@ -64,4 +65,9 @@ public class SocioCT {
 	public SocioCT(UUID idSocio) {
 		this.idSocio = idSocio;
 	}
+
+    public void setPlano(Planos planos) {
+		this.plano = planos;
+	}
+
 }

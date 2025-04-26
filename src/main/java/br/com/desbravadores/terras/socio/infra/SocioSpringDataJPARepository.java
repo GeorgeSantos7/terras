@@ -8,5 +8,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import br.com.desbravadores.terras.socio.domain.entity.SocioCT;
 
 public interface SocioSpringDataJPARepository extends MongoRepository<SocioCT, UUID> {
-    Optional<Object> findByIdSocio(UUID idSocio);
+    Optional<SocioCT> findById(UUID idSocio);
 }
