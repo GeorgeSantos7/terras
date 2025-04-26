@@ -1,6 +1,8 @@
 package br.com.desbravadores.terras.admin.application.api;
 
 import br.com.desbravadores.terras.admin.application.service.AdminService;
+import br.com.desbravadores.terras.plano.application.api.PlanosListResponse;
+import br.com.desbravadores.terras.plano.application.service.PlanoService;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
@@ -19,6 +21,7 @@ import java.util.UUID;
 public class AdminController implements AdminAPI {
     private final AdminService adminService;
     private final SocioService socioService;
+    private final PlanoService planoService;
 
     @Override
     @PreAuthorize("hasRole('ADMIN')")
@@ -33,7 +36,7 @@ public class AdminController implements AdminAPI {
     @PreAuthorize("hasRole('ADMIN')")
     public SocioDetalhadoResponse adminBuscaSocioPorId(UUID idSocio) {
         log.info("[inicia] AdminController - adminBuscaSocioPorId");
-        SocioDetalhadoResponse socio = socioService.buscaSocioPorId(idSocio);
+        SocioDetalhadoResponse socio = socioService.buscaSocioPorId(usuario, idSocio);
         log.info("[finaliza] AdminController - adminBuscaSocioPorId");
         return socio;
     }
@@ -45,5 +48,14 @@ public class AdminController implements AdminAPI {
         List<SocioDetalhadoResponse> socio = socioService.buscaTodasSocios();
         log.info("[finaliza] SocioController - listaSocios");
         return socio;
+    }
+
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<PlanosListResponse> buscaPlanos() {
+        log.info("[inicia] AdminController - buscaPlanos");
+        List<PlanosListResponse> planos = planoService.buscaPlanos();
+        log.info("[finaliza] AdminController - buscaPlanos");
+        return planos;
     }
 }
