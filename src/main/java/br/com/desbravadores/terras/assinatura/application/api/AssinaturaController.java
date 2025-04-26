@@ -1,8 +1,11 @@
 package br.com.desbravadores.terras.assinatura.application.api;
 
 import br.com.desbravadores.terras.assinatura.application.service.AssinaturaService;
+import br.com.desbravadores.terras.config.security.service.TokenService;
+import br.com.desbravadores.terras.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -12,6 +15,7 @@ import java.util.UUID;
 @Log4j2
 public class AssinaturaController implements AssinaturaAPI {
     private final AssinaturaService assinaturaService;
+    private final TokenService tokenService;
 
     @Override
     public AssinaturaResponse criaAssinaturaAoSocio(AssinaturaRequest assinaturaRequest) {

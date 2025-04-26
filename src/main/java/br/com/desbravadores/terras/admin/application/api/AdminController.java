@@ -36,7 +36,7 @@ public class AdminController implements AdminAPI {
     @PreAuthorize("hasRole('ADMIN')")
     public SocioDetalhadoResponse adminBuscaSocioPorId(UUID idSocio) {
         log.info("[inicia] AdminController - adminBuscaSocioPorId");
-        SocioDetalhadoResponse socio = socioService.buscaSocioPorId(idSocio);
+        SocioDetalhadoResponse socio = socioService.buscaSocioPorId(usuario, idSocio);
         log.info("[finaliza] AdminController - adminBuscaSocioPorId");
         return socio;
     }

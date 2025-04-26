@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface SocioService {
 	SocioResponse criaNovoSocio(SocioRequest novoSocio);
-	SocioDetalhadoResponse buscaSocioPorId(UUID idSocio);
+	SocioDetalhadoResponse buscaSocioPorId(String usuario, UUID idSocio);
     List<SocioDetalhadoResponse> buscaTodasSocios();
 }

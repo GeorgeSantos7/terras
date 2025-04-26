@@ -18,7 +18,8 @@ public interface SocioAPI {
 
 	@GetMapping("/socio/{idSocio}")
 	@ResponseStatus(code = HttpStatus.OK)
-	SocioDetalhadoResponse detalhaSocioPorId(@PathVariable UUID idSocio);
+	SocioDetalhadoResponse detalhaSocioPorId(@RequestHeader(name = "Authorization", required = true) String token,
+											 @PathVariable UUID idSocio);
 
 	@GetMapping("/socios")
 	@ResponseStatus(code = HttpStatus.OK)

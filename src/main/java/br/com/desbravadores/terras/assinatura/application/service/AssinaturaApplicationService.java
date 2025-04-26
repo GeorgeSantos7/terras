@@ -57,7 +57,6 @@ public class AssinaturaApplicationService implements  AssinaturaService {
     @Override
     public void adicionaAssinaturaAoSocio(UUID idAssinatura, UUID idSocio) {
         log.info("[inicia] AssinaturaApplicationService - adicionaAssinaturaAoSocio");
-
         Assinatura assinatura = assinaturaRepository.buscaAssinaturaPorId(idAssinatura)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Assinatura não encontrada!"));
 

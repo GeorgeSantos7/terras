@@ -30,7 +30,7 @@ public class SocioApplicationService implements SocioService {
 	}
 
 	@Override
-	public SocioDetalhadoResponse buscaSocioPorId(UUID idSocio) {
+	public SocioDetalhadoResponse buscaSocioPorId(String usuario, UUID idSocio) {
 		log.info("[inicia] SocioApplicationService - buscaSocioPorId");
 		SocioCT socioCT = socioRepository.buscaSocioPorId(idSocio);
 		log.info("[finaliza] SocioApplicationService - buscaSocioPorId");

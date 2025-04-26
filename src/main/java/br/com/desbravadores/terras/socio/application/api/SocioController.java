@@ -1,5 +1,8 @@
 package br.com.desbravadores.terras.socio.application.api;
 
+import br.com.desbravadores.terras.config.security.service.TokenService;
+import br.com.desbravadores.terras.handler.APIException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desbravadores.terras.socio.application.service.SocioService;
@@ -15,6 +18,7 @@ import java.util.UUID;
 public class SocioController implements SocioAPI {
 
 	private final SocioService socioService;
+	private final TokenService tokenService;
 
 	@Override
 	public SocioResponse criaSocio(SocioRequest novoSocio) {
@@ -24,10 +28,12 @@ public class SocioController implements SocioAPI {
 		return socioCriado;
 	}
 
+
 	@Override
-	public SocioDetalhadoResponse detalhaSocioPorId(UUID idSocio) {
+	public SocioDetalhadoResponse detalhaSocioPorId( String token, UUID idSocio) {
 		log.info("[inicia] SocioController - detalhaSocioPorId");
-		SocioDetalhadoResponse detalhaSocio = socioService.buscaSocioPorId(idSocio);
+		String usuario = getUsuarioByToken(token);
+		SocioDetalhadoResponse detalhaSocio = socioService.buscaSocioPorId(usuario, idSocio);
 		log.info("[finaliza] SocioController - detalhaSocioPorId");
 		return detalhaSocio;
 	}
@@ -40,4 +46,11 @@ public class SocioController implements SocioAPI {
 		return socio;
 	}
 
+	private String getUsuarioByToken(String token) {
+		log.debug("[token] {}", token);
+		String usuario = tokenService.getUsuarioByBearerToken(token)
+				.orElseThrow(() -> APIException.build(HttpStatus.UNAUTHORIZED, token));
+		log.info("[usuario] {}", usuario);
+		return usuario;
+	}
 }
