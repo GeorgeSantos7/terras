@@ -38,6 +38,14 @@ public class SocioApplicationService implements SocioService {
 	}
 
 	@Override
+	public SocioDetalhadoResponse adminBuscaSocioPorId(UUID idSocio) {
+		log.info("[inicia] SocioApplicationService - adminBuscaSocioPorId");
+		SocioCT socioCT = socioRepository.buscaSocioPorId(idSocio);
+		log.info("[finaliza] SocioApplicationService - adminBuscaSocioPorId");
+		return new SocioDetalhadoResponse(socioCT);
+	}
+
+	@Override
 	public List<SocioDetalhadoResponse> buscaTodasSocios() {
 		log.info("[inicia] SocioApplicationService - buscaTodasSocios");
 		List<SocioCT> socios = socioRepository.buscaTodasSocios();
