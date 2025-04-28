@@ -1,6 +1,9 @@
 package br.com.desbravadores.terras.admin.application.api;
 
 import br.com.desbravadores.terras.admin.application.service.AdminService;
+import br.com.desbravadores.terras.autenticacao.domain.Token;
+import br.com.desbravadores.terras.config.security.service.TokenService;
+import br.com.desbravadores.terras.handler.APIException;
 import br.com.desbravadores.terras.plano.application.api.PlanosListResponse;
 import br.com.desbravadores.terras.plano.application.service.PlanoService;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
@@ -9,6 +12,7 @@ import br.com.desbravadores.terras.socio.application.api.SocioResponse;
 import br.com.desbravadores.terras.socio.application.service.SocioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +26,7 @@ public class AdminController implements AdminAPI {
     private final AdminService adminService;
     private final SocioService socioService;
     private final PlanoService planoService;
+    private final TokenService tokenService;
 
     @Override
     @PreAuthorize("hasRole('ADMIN')")
@@ -36,9 +41,17 @@ public class AdminController implements AdminAPI {
     @PreAuthorize("hasRole('ADMIN')")
     public SocioDetalhadoResponse adminBuscaSocioPorId(UUID idSocio) {
         log.info("[inicia] AdminController - adminBuscaSocioPorId");
-        SocioDetalhadoResponse socio = socioService.buscaSocioPorId(usuario, idSocio);
+        SocioDetalhadoResponse socio = socioService.adminBuscaSocioPorId(idSocio);
         log.info("[finaliza] AdminController - adminBuscaSocioPorId");
         return socio;
+    }
+
+    private String getUsuarioByTokenn(String token) {
+        log.debug("[token] {}", token);
+        String usuario = tokenService.getUsuarioByBearerToken(token)
+                .orElseThrow(() -> APIException.build(HttpStatus.UNAUTHORIZED, token));
+        log.info("[usuario] {}", usuario);
+        return usuario;
     }
 
     @Override
