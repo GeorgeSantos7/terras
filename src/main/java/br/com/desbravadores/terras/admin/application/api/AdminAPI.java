@@ -29,4 +29,5 @@ public interface AdminAPI {
     @GetMapping(value = "/planos")
     @ResponseStatus(code = HttpStatus.OK)
     List<PlanosListResponse> buscaPlanos();
+
 }

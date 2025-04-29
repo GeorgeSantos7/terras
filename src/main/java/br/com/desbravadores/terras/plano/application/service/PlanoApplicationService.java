@@ -10,12 +10,12 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
 public class PlanoApplicationService implements PlanoService {
-
     private final PlanoRepository planoRepository;
 
     @Override
@@ -32,5 +32,15 @@ public class PlanoApplicationService implements PlanoService {
         List<Plano> planos = planoRepository.buscaPlanos();
         log.info("[finaliza] PlanoApplicationService - buscaPlanos");
         return PlanosListResponse.converte(planos);
+    }
+
+    @Override
+    public void deletaPlanoPorId(UUID idPlano) {
+        log.info("[inicia] PlanoApplicationService - deletaPlanoPorId");
+        planoRepository.buscaPlanoPorId(idPlano)
+                .orElseThrow(() -> new IllegalArgumentException("Plano não encontrado"));
+        planoRepository.deletaPlanoPorId(idPlano);
+        log.info("[finaliza] PlanoApplicationService - deletaPlanoPorId");
+
     }
 }
