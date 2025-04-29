@@ -12,11 +12,13 @@ import lombok.extern.log4j.Log4j2;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Value
 @Log4j2
 public class SocioDetalhadoResponse {
+    private UUID idSocio;
     private String cpf;
     private String nome;
     private String email;
@@ -31,6 +33,7 @@ public class SocioDetalhadoResponse {
     private LocalDateTime dataDeCadastro;
 
     public SocioDetalhadoResponse(SocioCT socioCT) {
+        this.idSocio = socioCT.getIdSocio();
         this.cpf = socioCT.getCpf();
         this.nome = socioCT.getNome();
         this.email = socioCT.getEmail();

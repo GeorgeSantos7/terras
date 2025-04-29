@@ -46,6 +46,14 @@ public class SocioController implements SocioAPI {
 		return socio;
 	}
 
+	@Override
+	public void alteraSocioPorId(String token, UUID idSocio, SocioAlteraRequest socio) {
+		log.info("[inicia] SocioController - alteraSocioPorId");
+		String usuario = getUsuarioByToken(token);
+		socioService.alteraSocioPorId(usuario, idSocio, socio);
+		log.info("[finaliza] SocioController - alteraSocioPorId");
+	}
+
 	private String getUsuarioByToken(String token) {
 		log.debug("[token] {}", token);
 		String usuario = tokenService.getUsuarioByBearerToken(token)

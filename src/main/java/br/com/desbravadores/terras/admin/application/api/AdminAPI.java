@@ -1,6 +1,7 @@
 package br.com.desbravadores.terras.admin.application.api;
 
 import br.com.desbravadores.terras.plano.application.api.PlanosListResponse;
+import br.com.desbravadores.terras.socio.application.api.SocioAlteraRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
@@ -29,5 +30,9 @@ public interface AdminAPI {
     @GetMapping(value = "/planos")
     @ResponseStatus(code = HttpStatus.OK)
     List<PlanosListResponse> buscaPlanos();
+
+    @PatchMapping("/edita-socio/{idSocio}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void alteraSocioPorId(@PathVariable UUID idSocio, @RequestBody @Valid SocioAlteraRequest socio);
 
 }

@@ -16,7 +16,7 @@ public interface SocioAPI {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	SocioResponse criaSocio(@RequestBody @Valid SocioRequest novoSocio);
 
-	@GetMapping("/socio/{idSocio}")
+	@GetMapping("/busca-socio-por-id/{idSocio}")
 	@ResponseStatus(code = HttpStatus.OK)
 	SocioDetalhadoResponse detalhaSocioPorId(@RequestHeader(name = "Authorization", required = true) String token,
 											 @PathVariable UUID idSocio);
@@ -24,4 +24,11 @@ public interface SocioAPI {
 	@GetMapping("/socios")
 	@ResponseStatus(code = HttpStatus.OK)
 	List<SocioDetalhadoResponse> listaSocios();
+
+	@PatchMapping("/edita-socio/{idSocio}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	void alteraSocioPorId(@RequestHeader(name = "Authorization", required = true) String token,
+			@PathVariable UUID idSocio, @RequestBody @Valid SocioAlteraRequest socio);
+
+
 }
