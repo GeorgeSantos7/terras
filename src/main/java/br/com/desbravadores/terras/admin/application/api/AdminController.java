@@ -7,6 +7,7 @@ import br.com.desbravadores.terras.handler.APIException;
 import br.com.desbravadores.terras.plano.application.api.PlanosListResponse;
 import br.com.desbravadores.terras.plano.application.service.PlanoService;
 import br.com.desbravadores.terras.plano.domain.Plano;
+import br.com.desbravadores.terras.socio.application.api.SocioAlteraRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
@@ -73,4 +74,11 @@ public class AdminController implements AdminAPI {
         return planos;
     }
 
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    public void alteraSocioPorId(UUID idSocio, SocioAlteraRequest socio) {
+        log.info("[inicia] AdminController - alteraSocioPorId");
+        socioService.adminAlteraSocioPorId(idSocio, socio);
+        log.info("[finaliza] AdminController - alteraSocioPorId");
+    }
 }

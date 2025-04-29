@@ -1,6 +1,7 @@
 package br.com.desbravadores.terras.socio.application.service;
 
 import br.com.desbravadores.terras.credencial.application.service.CredencialService;
+import br.com.desbravadores.terras.socio.application.api.SocioAlteraRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
@@ -50,5 +51,24 @@ public class SocioApplicationService implements SocioService {
 		log.info("[inicia] SocioApplicationService - buscaTodasSocios");
 		List<SocioCT> socios = socioRepository.buscaTodasSocios();
 		return SocioDetalhadoResponse.converte(socios);
+	}
+
+	@Override
+	public void alteraSocioPorId(String usuario, UUID idSocio, SocioAlteraRequest socio) {
+		log.info("[inicia] SocioApplicationService - alteraSocioPorId");
+		SocioCT socioCT = socioRepository.buscaSocioPorId(idSocio);
+		socioCT.atualiza(socio);
+		socioRepository.atualiza(socioCT);
+		log.info("[finaliza] SocioApplicationService - alteraSocioPorId");
+
+	}
+
+	@Override
+	public void adminAlteraSocioPorId(UUID idSocio, SocioAlteraRequest socio) {
+		log.info("[inicia] SocioApplicationService - adminAlteraSocioPorId");
+		SocioCT socioCT = socioRepository.buscaSocioPorId(idSocio);
+		socioCT.atualiza(socio);
+		socioRepository.atualiza(socioCT);
+		log.info("[finaliza] SocioApplicationService - adminAlteraSocioPorId");
 	}
 }

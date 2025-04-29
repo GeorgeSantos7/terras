@@ -44,4 +44,11 @@ public class SocioInfraRepository implements SocioRepository {
 		log.info("[finaliza] SocioInfraRepository buscaTodasSocios");
 		return socios;
 	}
+
+	@Override
+	public void atualiza(SocioCT socioCT) {
+		log.info("[inicia] SocioInfraRepository atualiza");
+		socioSpringDataJPARepository.save(socioCT);
+		log.info("[finaliza] SocioInfraRepository atualiza");
+	}
 }

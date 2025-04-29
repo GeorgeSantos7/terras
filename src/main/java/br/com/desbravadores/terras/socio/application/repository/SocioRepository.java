@@ -9,4 +9,5 @@ public interface SocioRepository {
 	SocioCT salva(SocioCT socio);
     SocioCT buscaSocioPorId(UUID idSocio);
     List<SocioCT> buscaTodasSocios();
+    void atualiza(SocioCT socioCT);
 }

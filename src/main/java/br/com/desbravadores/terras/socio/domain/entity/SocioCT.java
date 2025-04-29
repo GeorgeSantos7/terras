@@ -1,5 +1,6 @@
 package br.com.desbravadores.terras.socio.domain.entity;
 
+import br.com.desbravadores.terras.socio.application.api.SocioAlteraRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.domain.enums.Planos;
 import br.com.desbravadores.terras.socio.domain.enums.Sexo;
@@ -70,4 +71,11 @@ public class SocioCT {
 		this.plano = planos;
 	}
 
+    public void atualiza(SocioAlteraRequest socio) {
+		this.nome = socio.getNome();
+		this.sexo = socio.getSexo();
+		this.dataDeNascimento = socio.getDataDeNascimento();
+		this.telefone = socio.getTelefone();
+		this.endereco = new Endereco(socio.getEndereco());
+    }
 }

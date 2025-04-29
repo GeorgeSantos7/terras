@@ -36,13 +36,6 @@ public class FiltroToken extends OncePerRequestFilter {
         String path = request.getRequestURI();
         log.info("Path da requisição: {}", path);
 
-        // Ignorar autenticação para rotas públicas
-        if (path.startsWith("/terras/api/auth") || path.startsWith("/terras/api/admin")) {
-            log.info("Rota pública detectada. Ignorando autenticação.");
-            filterChain.doFilter(request, response);
-            return;
-        }
-
         try {
             String token = recuperaToken(request);
             autenticaCliente(token);
