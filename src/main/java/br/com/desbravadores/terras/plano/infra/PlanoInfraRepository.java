@@ -43,4 +43,11 @@ public class PlanoInfraRepository implements PlanoRepository {
         log.info("[finaliza] PlanoInfraRepository - buscaPlanoPorId");
         return plano;
     }
+
+    @Override
+    public void deletaPlanoPorId(UUID idPlano) {
+        log.info("[inicia] PlanoInfraRepository - deletaPlanoPorId");
+        planoSpringDataJPARepository.deleteById(idPlano);
+        log.info("[finaliza] PlanoInfraRepository - deletaPlanoPorId");
+    }
 }

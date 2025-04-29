@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +31,13 @@ public class PlanoController implements PlanoAPI {
         List<PlanosListResponse> planos = planoService.buscaPlanos();
         log.info("[finaliza] PlanoController - buscaPlanos");
         return planos;
+    }
+
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deletaPlanoPorId(UUID idPlano) {
+        log.info("[inicia] AdminController - deletaPlanoPorId");
+        planoService.deletaPlanoPorId(idPlano);
+        log.info("[finaliza] AdminController - deletaPlanoPorId");
     }
 }

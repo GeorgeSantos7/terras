@@ -6,6 +6,7 @@ import br.com.desbravadores.terras.config.security.service.TokenService;
 import br.com.desbravadores.terras.handler.APIException;
 import br.com.desbravadores.terras.plano.application.api.PlanosListResponse;
 import br.com.desbravadores.terras.plano.application.service.PlanoService;
+import br.com.desbravadores.terras.plano.domain.Plano;
 import br.com.desbravadores.terras.socio.application.api.SocioDetalhadoResponse;
 import br.com.desbravadores.terras.socio.application.api.SocioRequest;
 import br.com.desbravadores.terras.socio.application.api.SocioResponse;
@@ -71,4 +72,5 @@ public class AdminController implements AdminAPI {
         log.info("[finaliza] AdminController - buscaPlanos");
         return planos;
     }
+
 }
