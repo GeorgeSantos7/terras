@@ -12,4 +12,5 @@ public interface PlanoRepository {
     List<Plano> buscaPlanos();
     Optional<Plano> buscaPlanoPorId(UUID idPlano);
     void deletaPlanoPorId(UUID idPlano);
+
 }
